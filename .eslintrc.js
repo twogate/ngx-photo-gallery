@@ -3,7 +3,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.base.json', './tsconfig.app.json', './tsconfig.spec.json'],
+    project: ['./tsconfig.json', 'projects/core/tsconfig.lib.json', 'projects/core/tsconfig.lib.prod.json', 'projects/core/tsconfig.spec.json', 'projects/demo/tsconfig.app.json', 'projects/demo/tsconfig.spec.json'],
   },
   rules: {
     '@angular-eslint/component-selector': ['error', { type: 'element', style: 'kebab-case' }],
