@@ -2,6 +2,13 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/core",
   "lib": {
-    "entryFile": "src/public-api.ts"
-  }
+    "entryFile": "src/public-api.ts",
+    "cssUrl": "inline",
+    "umdModuleIds": {
+      "photoswipe": "PhotoSwipe",
+      "photoswipe/dist/photoswipe-ui-default": "PhotoSwipeUI_Default"
+    }
+  },
+  "whitelistedNonPeerDependencies": ["."]
+
 }

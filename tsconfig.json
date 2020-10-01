@@ -16,10 +16,7 @@
       "dom"
     ],
     "paths": {
-      "core": [
-        "dist/core/core",
-        "dist/core"
-      ]
+      "@twogate/ngx-photo-gallery": ["dist/core"]
     }
   }
 }

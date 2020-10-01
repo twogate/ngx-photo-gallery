@@ -16,8 +16,7 @@ module.exports = {
     '@angular-eslint/directive-selector': ['error', { type: 'attribute', style: 'camelCase' }],
     '@angular-eslint/no-input-rename': 'off',
     '@angular-eslint/no-output-native': 'off',
-    '@angular-eslint/no-output-on-prefix': 'warn',
-    '@typescript-eslint/semi': 'off',
+    '@typescript-eslint/semi': 'error',
     'max-len': 'off',
   },
   overrides: [
@@ -26,11 +25,15 @@ module.exports = {
       plugins: ['import'],
       extends: ['plugin:@typescript-eslint/recommended-requiring-type-checking'],
       rules: {
+        '@angular-eslint/no-output-on-prefix': 'off',
         '@typescript-eslint/member-ordering': 'error',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-misused-promises': 'off',
         '@typescript-eslint/no-empty-function': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unused-vars': [
           'warn',
           {
