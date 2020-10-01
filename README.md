@@ -1,27 +1,110 @@
-# NgxPhotoGallery
+# ngx-photo-gallery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+PhotoGallery library for Angular based on [PhotoSwipe](http://photoswipe.com/).
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Install from npm:
+```
+npm install --save @twogate/ngx-photo-gallery
+```
 
-## Code scaffolding
+Add PhotoGalleryModule to NgModule imports:
+```ts
+import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@NgModule({
+  ...
+  imports: [PhotoGalleryModule, ...]
+  ...
+})
+```
 
-## Build
+with options ([PhotoSwipeOptions](https://photoswipe.com/documentation/options.html)):
+```ts
+import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+@NgModule({
+  ...
+  imports: [PhotoGalleryModule.forRoot({
+    defaultOption: {
+      arrowEl: true,
+      indexIndicatorSep: '-'
+    }
+  }), ...]
+  ...
+})
+```
 
-## Running unit tests
+## Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+simple use:
+```html
+<div class="images" photoGalleryGroup>
+  <div class="images-item" [photoGallery]="image1.originUrl">
+    <img [src]="image1.thumbnailUrl" />
+  </div>
+  <div class="images-item" [photoGallery]="image2.originUrl">
+    <img [src]="image2.thumbnailUrl" />
+  </div>
+  <div class="images-item" [photoGallery]="image3.originUrl">
+    <img [src]="image3.thumbnailUrl" />
+  </div>
+</div>
+```
 
-## Running end-to-end tests
+with options ([PhotoSwipeOptions](https://photoswipe.com/documentation/options.html)):
+```html
+<div class="products" [photoGalleryGroup]="{ arrowEl: true, indexIndicatorSep: ' - ' }">
+  <div class="products-item">
+    <div class="products-item-name">{{ product1.name }}</div>
+    <div class="products-item-image" [photoGallery]="product1.image.originUrl">
+      <img [src]="product1.image.thumbnailUrl" />
+    </div>
+  </div>
+  <div class="products-item">
+    <div class="products-item-name">{{ product2.name }}</div>
+    <div class="products-item-image" [photoGallery]="product2.image.originUrl">
+      <img [src]="product2.image.thumbnailUrl" />
+    </div>
+  </div>
+</div>
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+on Ionic project:
+```html
+<div
+  class="images"
+  photoGalleryGroup
+  (onPhotoGalleryInit)="setSwipeBackEnabled(false)"
+  (onPhotoGalleryDestroy)="setSwipeBackEnabled(true)"
+>
+  <div class="images-item"
+    *ngFor="let image of images"
+    [photoGallery]="image.originUrl"
+  >
+    <img [src]="image.thumbnailUrl" />
+  </div>
+</div>
+```
+```ts
+import { Component, Input } from '@angular/core'
+import { NavController } from 'ionic-angular'
 
-## Further help
+@Component({
+...
+})
+export class AppComponent {
+  images = [...]
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  constructor(private navCtrl: NavController) {}
+
+  setSwipeBackEnabled(value: boolean) {
+    this.navCtrl.swipeBackEnabled = value
+  }
+}
+```
+
+## Earlier Version
+
+Move to [`twogate/ngx-photo-gallery-v0`](https://github.com/twogate/ngx-photo-gallery-v0)
