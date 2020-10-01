@@ -27,7 +27,7 @@ import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 @NgModule({
   ...
   imports: [PhotoGalleryModule.forRoot({
-    defaultOption: {
+    defaultOptions: {
       arrowEl: true,
       indexIndicatorSep: '-'
     }
