@@ -15,8 +15,8 @@
     "zoom"
   ],
   "peerDependencies": {
-    "@angular/common": "^10.1.3",
-    "@angular/core": "^10.1.3"
+    "@angular/common": "^12.0.0",
+    "@angular/core": "^12.0.0"
   },
   "dependencies": {
     "photoswipe": "^4.1.3",
