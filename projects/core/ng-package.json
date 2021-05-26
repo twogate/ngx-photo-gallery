@@ -9,6 +9,5 @@
       "photoswipe/dist/photoswipe-ui-default": "PhotoSwipeUI_Default"
     }
   },
-  "whitelistedNonPeerDependencies": ["."]
-
+  "allowedNonPeerDependencies": ["."]
 }
