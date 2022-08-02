@@ -143,9 +143,9 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": false
-  },
-  "defaultProject": "core"
+  }
 }

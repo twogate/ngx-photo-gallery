@@ -1,4 +1,4 @@
-import { Directive, Output, Input, EventEmitter, Optional } from '@angular/core';
+import { Directive, Output, Input, EventEmitter, Optional, ViewContainerRef } from '@angular/core';
 import PhotoSwipe from 'photoswipe';
 import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
@@ -22,17 +22,23 @@ export const DEFAULT_OPTIONS = {
   selector: '[photoGalleryGroup]',
 })
 export class PhotoGalleryGroupDirective {
+  @Input('photoGalleryGroup') options: GalleryOptions;
+  @Output() onPhotoGalleryInit = new EventEmitter();
+  @Output() onPhotoGalleryDestroy = new EventEmitter();
+
   private defaultOptions: GalleryOptions;
   private gallery: any;
   private galleryItems: { [key: string]: GalleryItem } = {};
   private galleryItemIds: Set<string> = new Set<string>();
   private galleryImages: GalleryImage[] = [];
-  @Input('photoGalleryGroup') options: GalleryOptions;
-  @Output() onPhotoGalleryInit = new EventEmitter();
-  @Output() onPhotoGalleryDestroy = new EventEmitter();
 
-  constructor(@Optional() private photoGalleryConfig: PhotoGalleryConfig, private lightboxService: LightboxService) {
+  constructor(
+    @Optional() private photoGalleryConfig: PhotoGalleryConfig,
+    private viewContainerRef: ViewContainerRef,
+    private lightboxService: LightboxService
+  ) {
     this.defaultOptions = { ...DEFAULT_OPTIONS, ...this.photoGalleryConfig?.defaultOptions };
+    this.lightboxService.initialize(this.viewContainerRef);
   }
 
   registerGalleryItem(item: { id: string; element: HTMLElement; imageUrl: string; caption?: string }): void {
@@ -97,14 +103,14 @@ export class PhotoGalleryGroupDirective {
     const photoSwipe = this.lightboxService.getLightboxElement();
 
     this.gallery = new PhotoSwipe(photoSwipe, PhotoSwipeUI_Default, this.galleryImages, options);
-    this.gallery.listen('gettingData', (_, slide) => {
+    this.gallery.listen('gettingData', (_, slide: GalleryImage) => {
       if (slide.doGetSlideDimensions) {
         setTimeout(async () => {
           await this.getSlideDimensions(slide);
         }, 300);
       }
     });
-    this.gallery.listen('imageLoadComplete', async (_, slide) => {
+    this.gallery.listen('imageLoadComplete', async (_, slide: GalleryImage) => {
       if (slide.doGetSlideDimensions) {
         await this.getSlideDimensions(slide);
       }

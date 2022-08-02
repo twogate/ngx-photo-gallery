@@ -101,7 +101,7 @@ module.exports = {
       parser: '@angular-eslint/template-parser',
       plugins: ['@angular-eslint', '@angular-eslint/template'],
       rules: {
-        '@angular-eslint/template/banana-in-a-box': 'error',
+        '@angular-eslint/template/banana-in-box': 'error',
         '@angular-eslint/template/cyclomatic-complexity': 'off',
         '@angular-eslint/template/no-negated-async': 'error',
         '@angular-eslint/template/i18n': 'off',
