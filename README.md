@@ -4,12 +4,19 @@ PhotoGallery library for Angular based on [PhotoSwipe](http://photoswipe.com/).
 
 ## Installation
 
+| angular | package version |
+| ------- | --------------- |
+| 15      | 1.4.0           |
+| 13~14   | 1.3.0           |
+
 Install from npm:
+
 ```
 npm install --save @twogate/ngx-photo-gallery
 ```
 
 Add PhotoGalleryModule to NgModule imports:
+
 ```ts
 import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 
@@ -21,6 +28,7 @@ import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 ```
 
 with options ([PhotoSwipeOptions](https://photoswipe.com/documentation/options.html)):
+
 ```ts
 import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 
@@ -39,6 +47,7 @@ import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery'
 ## Usage
 
 simple use:
+
 ```html
 <div class="images" photoGalleryGroup>
   <div class="images-item" [photoGallery]="image1.originUrl">
@@ -54,6 +63,7 @@ simple use:
 ```
 
 with options ([PhotoSwipeOptions](https://photoswipe.com/documentation/options.html)):
+
 ```html
 <div class="products" [photoGalleryGroup]="{ arrowEl: true, indexIndicatorSep: ' - ' }">
   <div class="products-item">
@@ -72,6 +82,7 @@ with options ([PhotoSwipeOptions](https://photoswipe.com/documentation/options.h
 ```
 
 on Ionic project:
+
 ```html
 <div
   class="images"
@@ -79,14 +90,12 @@ on Ionic project:
   (onPhotoGalleryInit)="setSwipeBackEnabled(false)"
   (onPhotoGalleryDestroy)="setSwipeBackEnabled(true)"
 >
-  <div class="images-item"
-    *ngFor="let image of images"
-    [photoGallery]="image.originUrl"
-  >
+  <div class="images-item" *ngFor="let image of images" [photoGallery]="image.originUrl">
     <img [src]="image.thumbnailUrl" />
   </div>
 </div>
 ```
+
 ```ts
 import { Component, Input } from '@angular/core'
 import { NavController } from 'ionic-angular'
