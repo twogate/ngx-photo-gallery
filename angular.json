@@ -69,6 +69,15 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": true,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": false
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -104,6 +113,9 @@
             "browserTarget": "demo:build"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "demo:build:development"
+            },
             "production": {
               "browserTarget": "demo:build:production"
             }

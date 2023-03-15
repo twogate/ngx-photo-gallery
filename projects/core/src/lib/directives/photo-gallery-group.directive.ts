@@ -1,4 +1,4 @@
-import { Directive, Output, Input, EventEmitter, Optional, ViewContainerRef } from '@angular/core';
+import { Directive, Output, Input, EventEmitter, Optional } from '@angular/core';
 import PhotoSwipe from 'photoswipe';
 import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
 
@@ -34,11 +34,9 @@ export class PhotoGalleryGroupDirective {
 
   constructor(
     @Optional() private photoGalleryConfig: PhotoGalleryConfig,
-    private viewContainerRef: ViewContainerRef,
     private lightboxService: LightboxService
   ) {
     this.defaultOptions = { ...DEFAULT_OPTIONS, ...this.photoGalleryConfig?.defaultOptions };
-    this.lightboxService.initialize(this.viewContainerRef);
   }
 
   registerGalleryItem(item: { id: string; element: HTMLElement; imageUrl: string; caption?: string }): void {
@@ -64,6 +62,8 @@ export class PhotoGalleryGroupDirective {
   }
 
   async openPhotoSwipe(id: string): Promise<void> {
+    this.lightboxService.create();
+
     if (this.galleryItems[id].image.doGetSlideDimensions) {
       const targetImage = await loadImage(this.galleryItems[id].image.src);
       this.galleryItems[id].image.w = targetImage.naturalWidth;
@@ -116,6 +116,7 @@ export class PhotoGalleryGroupDirective {
       }
     });
     this.gallery.listen('destroy', () => {
+      this.lightboxService.destroy();
       this.onPhotoGalleryDestroy.emit();
     });
     this.onPhotoGalleryInit.emit();
