@@ -1,6 +1,6 @@
 {
   "name": "@twogate/ngx-photo-gallery",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "license": "MIT",
   "repository": "https://github.com/twogate/ngx-photo-gallery",
   "keywords": [
@@ -15,8 +15,8 @@
     "zoom"
   ],
   "peerDependencies": {
-    "@angular/common": "^16",
-    "@angular/core": "^16"
+    "@angular/common": "^17",
+    "@angular/core": "^17"
   },
   "dependencies": {
     "photoswipe": "^4.1.3",
