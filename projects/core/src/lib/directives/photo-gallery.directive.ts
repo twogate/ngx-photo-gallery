@@ -4,6 +4,7 @@ import { PhotoGalleryGroupDirective } from './photo-gallery-group.directive';
 
 @Directive({
   selector: '[photoGallery]',
+  standalone: true,
 })
 export class PhotoGalleryDirective implements AfterContentInit, OnDestroy {
   @Input('photoGallery') imageUrl: string;
@@ -11,7 +12,10 @@ export class PhotoGalleryDirective implements AfterContentInit, OnDestroy {
   @Input() photoGalleryCaption: string;
   id: string;
 
-  constructor(private el: ElementRef, private photoGalleryGroup: PhotoGalleryGroupDirective) {}
+  constructor(
+    private el: ElementRef,
+    private photoGalleryGroup: PhotoGalleryGroupDirective
+  ) {}
 
   @HostListener('click')
   async openPhotoSwipe(): Promise<void> {

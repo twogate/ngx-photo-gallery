@@ -20,6 +20,7 @@ export const DEFAULT_OPTIONS = {
 
 @Directive({
   selector: '[photoGalleryGroup]',
+  standalone: true,
 })
 export class PhotoGalleryGroupDirective {
   @Input('photoGalleryGroup') options: GalleryOptions;

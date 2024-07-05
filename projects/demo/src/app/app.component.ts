@@ -1,9 +1,13 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { PhotoGalleryModule } from '@twogate/ngx-photo-gallery';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [PhotoGalleryModule, NgFor],
 })
 export class AppComponent {
   images = [

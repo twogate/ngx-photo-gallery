@@ -6,9 +6,8 @@ import { PhotoGalleryDirective } from './directives/photo-gallery.directive';
 import { PhotoGalleryConfig } from './interfaces/config';
 
 @NgModule({
-  declarations: [LightboxComponent, PhotoGalleryDirective, PhotoGalleryGroupDirective],
   providers: [],
-  imports: [],
+  imports: [LightboxComponent, PhotoGalleryDirective, PhotoGalleryGroupDirective],
   exports: [PhotoGalleryDirective, PhotoGalleryGroupDirective],
 })
 export class PhotoGalleryModule {

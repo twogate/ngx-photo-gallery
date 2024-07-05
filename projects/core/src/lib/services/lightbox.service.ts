@@ -13,10 +13,7 @@ export class LightboxService {
   }
 
   create() {
-    this.lightbox = createComponent(
-      LightboxComponent,
-      { environmentInjector: this.applicationRef.injector }
-    );
+    this.lightbox = createComponent(LightboxComponent, { environmentInjector: this.applicationRef.injector });
     document.body.appendChild(this.lightbox.location.nativeElement);
     this.applicationRef.attachView(this.lightbox.hostView);
 
