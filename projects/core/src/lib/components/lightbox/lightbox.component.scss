@@ -7,6 +7,7 @@
   $pswp__root-z-index: 20000;
   $pswp__error-text-color: #cccccc;
   $pswp__include-minimal-style: true;
+  $pswp__assets-path: '/';
 
   @import 'photoswipe/src/css/main.scss';
   @import 'photoswipe/src/css/default-skin/default-skin.scss';
